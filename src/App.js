@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./styles/base.scss";
+import Home from "./components/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Free from "./components/Free/Free";
+import Clients from "./components/Clients/Clients";
+import SuperRare from "./components/SuperRare/SuperRare";
+import Release from "./components/Release/Release";
+import Like from "./components/Like/Like";
+import Signup from "./components/Signup/Signup";
+import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+  const changeTheme = () => {
+    theme === "dark" ? setTheme("light") : setTheme("dark");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-theme={theme} className="app-container">
+      <ScrollToTop />
+      <Navbar changeTheme={changeTheme} currentTheme={theme} />
+      <Home />
+      <Free />
+      <Clients />
+      <SuperRare />
+      <Release />
+      <Like />
+      <Signup />
+      <Footer />
     </div>
   );
 }
